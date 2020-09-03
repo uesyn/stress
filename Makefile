@@ -1,9 +1,9 @@
 all: build docker
 
 build:
-	@GOBIN=`pwd` CGO_ENABLED=0 go install --ldflags '-extldflags "-static"'
+	@CGO_ENABLED=0 go build
 
 docker:
-	@docker build -t vish/stress .
+	@docker build -t ghcr.io/uesyn/stress .
 
 .PHONY: docker build all

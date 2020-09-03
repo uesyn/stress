@@ -1,6 +1,8 @@
+FROM golang:1.15.1 as builder
+COPY . /app
+WORKDIR /app
+RUN make build
+
 FROM scratch
-MAINTAINER vishnuk@google.com
-
-ADD stress /
-
+COPY --from=builder /app/stress /stress
 ENTRYPOINT ["/stress", "-logtostderr"]
