@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress
+spec:
+  containers:
+  - image: ghcr.io/uesyn/stress:latest
+    name: stress
+    args:
+    - -mem-total=100Gi
+    - -mem-alloc-size=100Mi
+    - -mem-alloc-sleep=3s
+    resources:
+      limits:
+        memory: 1Gi
